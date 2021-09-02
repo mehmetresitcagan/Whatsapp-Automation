@@ -11,6 +11,10 @@ def read_contact_file():
 
 if __name__ == '__main__':
     data = read_contact_file()
-    print("Rehberinizde bulunan tüm kişiler:")
     print(make_table(data))
-    send_messages(data, "selam")
+    option = input("Rehberinizdeki tüm kişilere mesaj göndermek için '1', belirli kişilere göndermek için '2', "
+                   "çıkış yapmak için herhangi bir tuşa basın:")
+
+    if str(option) == "1":
+        send_messages(data, "123")
+
