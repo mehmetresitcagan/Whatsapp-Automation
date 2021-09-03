@@ -1,3 +1,9 @@
+"""
+
+Makes table of contact list by using only string characters.
+
+"""
+
 def column_width_detect(rows, labels):
     cellWidths = []
     for i in range(len(rows[0])):
@@ -56,9 +62,9 @@ def first_line(columnWidth):
     return line
 
 
-def make_table(data):
-    labels = [label for label in data]
-    rows = [[name, contact] for name, contact in zip(data["name"], data["contact"])]
+def make_table(df):
+    labels = [label for label in df]
+    rows = [[name, contact] for name, contact in zip(df["name"], df["contact"])]
     columnWidth = column_width_detect(rows, labels)
     table = first_line(columnWidth) + "\n"
 

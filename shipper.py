@@ -2,6 +2,12 @@ import time
 import pyautogui as auto
 import webbrowser as web
 
+"""
+
+Delivers given messages to receivers in the given time.
+
+"""
+
 
 def find_new_chat_button():
     buttonLocation = None
@@ -14,9 +20,9 @@ def find_new_chat_button():
     auto.click()
 
 
-def send_messages(data, message):
+def send_messages(df, message):
     web.open("https://web.whatsapp.com/")
-    for contact in data["contact"]:
+    for contact in df["contact"]:
         find_new_chat_button()
         auto.typewrite(str(contact), interval=.02)
         time.sleep(0.5)
