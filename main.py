@@ -1,6 +1,6 @@
 import pandas as pd
 from table import *
-from shipper import *
+from delivery import *
 
 
 def read_contact_file():
@@ -29,8 +29,8 @@ def main():
         elif option == "2":
             print(make_table(df))
             print(
-                "Rehberinizdeki tüm kişiler gösterilmiştir. Sadece adını doğru yazdığınız kişilerer mesaj gönderilecektir.")
-            nameInputs = input("Mesaj göndermek istediğiniz kişilerin isimlerini bosluk bırakarak yazın:").split()
+                "Rehberinizdeki tüm kişiler gösterilmiştir. Sadece adını doğru yazdığınız kişilere mesaj gönderilecektir.")
+            nameInputs = input("Mesaj göndermek istediğiniz kişilerin isimlerini boşluk bırakarak yazın:").split()
             messageReceiversList = [[name, contactNo] for name, contactNo in zip(df["name"], df["contact"]) if
                                     name_is_in_the_list(nameInputs, name)]
             messageReceiversDf = pd.DataFrame(data=messageReceiversList, columns=["name", "contact"])

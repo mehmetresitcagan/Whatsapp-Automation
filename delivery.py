@@ -1,6 +1,7 @@
 import time
 import pyautogui as auto
 import webbrowser as web
+
 from exceptions import InvalidTimeException
 
 """
@@ -23,7 +24,7 @@ def find_new_chat_button():
 
 def send_messages(df, message, time_hour, time_min):
     left_time = set_time(time_hour, time_min)
-    print(left_time)
+    print(f"{left_time_format(left_time)} saniye sonra mesajınız gönderilecektir.")
     time.sleep(left_time)
     web.open("https://web.whatsapp.com/")
     for contact in df["contact"]:
@@ -62,3 +63,18 @@ def set_time(time_hour, time_min):
         left_time += 86400
 
     return left_time
+
+
+def left_time_format(left_time):
+    hoursLeft = left_time // 3600
+    left_time = left_time - hoursLeft * 3600
+    minutesLeft = left_time // 60
+    left_time = left_time - minutesLeft * 60
+    secondsLeft = left_time
+    duration = [hoursLeft, minutesLeft, secondsLeft]
+    string = ["saat", "dakika", "saniye"]
+    sentence = ""
+    for drt, word in zip(duration, string):
+        if drt != 0:
+            sentence = sentence + str(drt) + " " + word + " "
+    return sentence
